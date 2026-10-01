@@ -3,34 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="no-referrer">
     <meta name="description" content="PostProject gives video and film software one shared database of your media, so programs can work together on a project and keep track of files wherever they move.">
     <title>PostProject — one shared memory for your video software</title>
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="hero">
       <nav aria-label="Primary">
-        <a class="wordmark" href="/">PostProject</a>
+        <a class="wordmark" href="/">
+          <span class="wordmark-logo" aria-hidden="true"></span>
+          <span class="wordmark-text">PostProject</span>
+        </a>
         <div>
           <a href="https://docs.postproject.org/">Documentation</a>
           <a href="https://github.com/postproject-org/postproject">Source</a>
         </div>
       </nav>
       <main>
-        <p class="eyebrow">Open-source media sharing for film and video software</p>
-        <h1>All your video software, working from the same page.</h1>
-        <p class="intro">
-          Today, a film passes through several programs: one for editing, one
-          for effects, one for sound. Each keeps its own list of your clips, and
-          every hand-off means exporting, re-importing and fixing “media offline”
-          warnings. PostProject is a free building block that lets these programs
-          share one database of your media instead. Each program keeps its own
-          project files, but what one of them learns about a clip, the others
-          know too.
-        </p>
-        <div class="actions">
-          <a class="primary" href="https://docs.postproject.org/">Read the docs</a>
-          <a href="https://github.com/postproject-org/postproject/releases">Download the developer package</a>
+        <span class="hero-logo" aria-hidden="true"></span>
+        <div class="hero-copy">
+          <p class="eyebrow">Open-source media sharing for film and video software</p>
+          <h1>All your video software, working from the same page.</h1>
+          <p class="intro">
+            Today, a film passes through several programs: one for editing, one
+            for effects, one for sound. Each keeps its own list of your clips, and
+            every hand-off means exporting, re-importing and fixing “media offline”
+            warnings. PostProject is a free building block that lets these programs
+            share one database of your media instead. Each program keeps its own
+            project files, but what one of them learns about a clip, the others
+            know too.
+          </p>
+          <div class="actions">
+            <a class="primary" href="https://docs.postproject.org/">Read the docs</a>
+            <a href="https://github.com/postproject-org/postproject/releases">Download the developer package</a>
+          </div>
         </div>
       </main>
     </header>

@@ -1,3 +1,4 @@
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from unittest import TestCase
@@ -10,6 +11,8 @@ class PageParser(HTMLParser):
         super().__init__()
         self.links = []
         self.stylesheets = []
+        self.images = []
+        self.icons = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
@@ -17,6 +20,10 @@ class PageParser(HTMLParser):
             self.links.append(values.get("href"))
         if tag == "link" and values.get("rel") == "stylesheet":
             self.stylesheets.append(values.get("href"))
+        if tag == "img":
+            self.images.append(values.get("src"))
+        if tag == "link" and values.get("rel") == "icon":
+            self.icons.append(values.get("href"))
 
 
 class SiteTest(TestCase):
@@ -26,8 +33,13 @@ class SiteTest(TestCase):
         self.parser.feed(self.source)
 
     def test_local_assets_exist(self):
-        for asset in self.parser.stylesheets:
+        for asset in self.parser.stylesheets + self.parser.images + self.parser.icons:
             self.assertTrue((ROOT / asset).is_file(), asset)
+        for stylesheet in self.parser.stylesheets:
+            stylesheet_path = ROOT / stylesheet
+            source = stylesheet_path.read_text(encoding="utf-8")
+            for asset in re.findall(r"url\(['\"]?([^)'\"\s]+)", source):
+                self.assertTrue((stylesheet_path.parent / asset).is_file(), asset)
 
     def test_primary_destinations_are_secure(self):
         external = [link for link in self.parser.links if link != "/"]
@@ -37,4 +49,3 @@ class SiteTest(TestCase):
     def test_custom_domain_matches_landing_link(self):
         self.assertEqual((ROOT / "CNAME").read_text().strip(), "www.postproject.org")
         self.assertIn("https://docs.postproject.org/", self.parser.links)
-
