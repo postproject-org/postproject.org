@@ -13,9 +13,12 @@ class PageParser(HTMLParser):
         self.stylesheets = []
         self.images = []
         self.icons = []
+        self.ids = set()
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        if "id" in values:
+            self.ids.add(values["id"])
         if tag == "a":
             self.links.append(values.get("href"))
         if tag == "link" and values.get("rel") == "stylesheet":
@@ -42,7 +45,13 @@ class SiteTest(TestCase):
                 self.assertTrue((stylesheet_path.parent / asset).is_file(), asset)
 
     def test_primary_destinations_are_secure(self):
-        external = [link for link in self.parser.links if link != "/"]
+        external = [
+            link for link in self.parser.links
+            if link != "/" and not link.startswith("#")
+        ]
+        for link in self.parser.links:
+            if link.startswith("#"):
+                self.assertIn(link[1:], self.parser.ids, link)
         self.assertTrue(external)
         self.assertTrue(all(link.startswith("https://") for link in external))
 

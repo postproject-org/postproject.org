@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
     <meta name="referrer" content="no-referrer">
-    <meta name="description" content="PostProject gives video and film software one shared database of your media, so programs can work together on a project and keep track of files wherever they move.">
+    <meta name="description" content="Try PostProject integrations for shared media identity, moved-media recovery and render provenance across post-production applications.">
     <title>PostProject — one shared memory for your video software</title>
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="theme.css">
@@ -20,68 +20,89 @@
           <span class="wordmark-text">PostProject</span>
         </a>
         <div>
+          <a href="#integrations">Integrations and demos</a>
           <a href="https://docs.postproject.org/">Documentation</a>
           <a href="https://github.com/postproject-org/postproject">Source</a>
         </div>
       </nav>
-      <main>
+      <div class="hero-layout">
         <span class="hero-logo" aria-hidden="true"></span>
         <div class="hero-copy">
           <p class="eyebrow">Open-source media sharing for film and video software</p>
-          <h1>All your video software, working from the same page.</h1>
+          <h1>Keep your media connected across applications.</h1>
           <p class="intro">
-            Today, a film passes through several programs: one for editing, one
-            for effects, one for sound. Each keeps its own list of your clips, and
-            every hand-off means exporting, re-importing and fixing “media offline”
-            warnings. PostProject is a free building block that lets these programs
-            share one database of your media instead. Each program keeps its own
-            project files, but what one of them learns about a clip, the others
-            know too.
+            PostProject lets participating applications share what they know
+            about your media: its identity, where to find it, and which inputs
+            produced a result. Your applications keep their own native projects,
+            and your media files stay where you store them. Start with a pilot
+            integration and an explicitly selected local production.
           </p>
           <div class="actions">
-            <a class="primary" href="https://docs.postproject.org/">Read the docs</a>
+            <a class="primary" href="#integrations">Try PostProject in an application</a>
             <a href="https://github.com/postproject-org/postproject/releases">Download the developer package</a>
           </div>
         </div>
-      </main>
+      </div>
     </header>
 
-    <section class="proof" aria-label="Project capabilities">
+    <main>
+    <section class="proof" aria-label="Multi-application workflows">
       <article>
         <p class="number">01</p>
-        <h2>One database, every program</h2>
-        <p>Your editing, effects and sound programs can all open the same PostProject database at the same time. As soon as the editor imports a take, the effects program can see it; when the effects program renders a shot, the editor can pick it up. There is nothing to export, re-import or keep in sync by hand.</p>
+        <h2>Record in OBS. Pick it up in Blender.</h2>
+        <p>Register a finished recording, then let Blender recognize the same media in your shared production. Keep its identity when files move, without registering a second logical asset.</p>
+        <a href="https://github.com/postproject-org/postproject-obs#reproduce-acceptance-and-the-handoff">OBS → Blender walkthrough</a>
       </article>
       <article>
         <p class="number">02</p>
-        <h2>Works on any computer</h2>
-        <p>A project remembers “camera footage” instead of a fixed location like “D:\Footage”, so it opens on your laptop and in the studio alike. A fingerprint of each file lets PostProject recognize moved clips. If two files match equally well, it lets you choose instead of guessing.</p>
+        <h2>Edit in Kdenlive. Render in Blender. Keep the connection.</h2>
+        <p>Reuse media identity in Blender, record the inputs that produced a render, and resolve the result through the PostProject OpenAssetIO Manager. Check whether input changes affect the result.</p>
+        <a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/SHARED-PRODUCTION.md">Kdenlive → Blender → Manager walkthrough</a>
       </article>
       <article>
         <p class="number">03</p>
-        <h2>One clip, many versions</h2>
-        <p>The original camera file, a smaller copy for smooth editing, and the finished color-graded result all count as one clip that every program recognizes. PostProject also records which program made each result and from what, so anyone can trace a finished shot back to its source.</p>
+        <h2>Move media once. Reuse what the apps know.</h2>
+        <p>Participating applications can reuse identities and confirmed locations from the same local production. Content evidence helps recover moved clips; ambiguous matches stay a choice for you.</p>
+        <a href="https://docs.postproject.org/src/integrators/known-media-adoption.html">How identity adoption works</a>
       </article>
+    </section>
+
+    <section class="catalog" id="integrations" aria-labelledby="integrations-title">
+      <p class="eyebrow">Try PostProject in an application</p>
+      <h2 id="integrations-title">Integrations and demos</h2>
+      <p>These are experimental integrations. Select the same local <code>.pproj</code> production in each participating application. Timelines, node graphs and tracks stay in their native projects; media transfer is separate.</p>
+      <ul>
+        <li><a href="https://github.com/postproject-org/postproject-blender">Blender</a> — build the extension for identity adoption, relinking and render provenance.</li>
+        <li><a href="https://github.com/postproject-org/postproject-kdenlive">Kdenlive</a> — build the optional pilot for clip recording, missing-media recovery and proxies.</li>
+        <li><a href="https://github.com/postproject-org/postproject-obs">OBS</a> — build the pilot to register finalized recordings.</li>
+        <li><a href="https://github.com/postproject-org/postproject-natron">Natron</a> — build the Reader pilot for compact sequences and explicit relinking.</li>
+        <li><a href="https://github.com/postproject-org/postproject-ardour">Ardour</a> — build the audio pilot to recover renamed sources by content.</li>
+        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager">OpenAssetIO Manager</a> and <a href="https://github.com/postproject-org/postproject-otio-demo">OTIO demo</a> — build matching packages and resolve media references through a standard host interface.</li>
+        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager/blob/main/docs/nuke-trial.md">Nuke 17.0v1</a> — prepared trial; licensed execution pending.</li>
+      </ul>
+      <p>Recorded automated Linux checks cover Blender 5.2.2, Kdenlive 26.08.1, OBS 32.2.2, Natron 2.5.0 and Ardour 9.8. Follow each installation guide for the matching SDK, tested scope and removal or plugin-free fallback. Current development sources require a source build or matching review artifacts.</p>
+      <p>Knowledge accumulates as apps participate: OBS records identity, Blender can reuse it and add render provenance, and a configured consumer can resolve the recorded result. The two walkthroughs demonstrate separate handoffs; a combined three-app recording workflow has not been qualified.</p>
     </section>
 
     <section class="integration">
       <div>
         <p class="eyebrow">For software developers</p>
-        <h2>Hand an edit to another program and it still finds every clip.</h2>
+        <h2>Use media identities across application boundaries.</h2>
       </div>
       <p>
         A production is a single database file that several programs can use
         together. Every change is recorded, so each program can ask what the
         others have changed since it last looked. PostProject also works with
-        open industry standards: an edit saved as OpenTimelineIO, a common
-        format for exchanging timelines, can refer to clips by their PostProject
-        ID, and the receiving program uses OpenAssetIO to ask PostProject where
-        each clip is on this computer. Developers can use PostProject from C,
-        C++, Python or the command line. Everything stays on your computers;
-        nothing is uploaded.
+        open industry standards: the OpenTimelineIO demo refers to media by
+        PostProject identity, and a configured OpenAssetIO Manager resolves
+        those references on this computer. Missing or ambiguous files remain
+        explicit results. Developers can use PostProject from C, C++, Python
+        or the command line. This workflow uses local production data.
       </p>
       <a href="https://github.com/postproject-org/postproject-otio-demo">Run the demonstration →</a>
     </section>
+
+    </main>
 
     <footer>
       <span>PostProject alpha · experimental APIs</span>
