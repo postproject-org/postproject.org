@@ -67,20 +67,75 @@
     </section>
 
     <section class="catalog" id="integrations" aria-labelledby="integrations-title">
-      <p class="eyebrow">Try PostProject in an application</p>
-      <h2 id="integrations-title">Integrations and demos</h2>
-      <p>Try these experimental integrations with a test project. Select the same local <code>.pproj</code> file in each application to share media knowledge. Your edits, compositions and tracks stay in their familiar projects; copy media separately when needed.</p>
-      <ul>
-        <li><a href="https://github.com/postproject-org/postproject-blender/blob/main/ADOPTION.md">Blender</a> — reconnect moved movies, sounds and image sequences in the Sequencer, and keep track of the inputs behind your renders.</li>
-        <li><a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/ADOPTION.md">Kdenlive</a> — find renamed or moved clips when reopening an edit, and check whether proxies still match their source footage.</li>
-        <li><a href="https://github.com/postproject-org/postproject-obs">OBS</a> — keep completed recordings and their details available to other participating applications.</li>
-        <li><a href="https://github.com/postproject-org/postproject-natron">Natron</a> — reconnect moved image sequences to existing Reader nodes and keep your composition intact.</li>
-        <li><a href="https://github.com/postproject-org/postproject-ardour">Ardour</a> — find renamed or moved audio files by their file contents and reconnect them to an existing session.</li>
-        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager">OpenAssetIO Manager</a> and <a href="https://github.com/postproject-org/postproject-otio-demo">OTIO demo</a> — find timeline media without depending on its original file paths, using OpenAssetIO to connect the application to PostProject.</li>
-        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager/blob/main/docs/nuke-trial.md">Nuke 17.0v1</a> — a prepared trial for finding moved plates without rebuilding Reader nodes; it has not yet been run in licensed Nuke.</li>
-      </ul>
-      <p>These pilots currently require building an extension or a matching application. Each linked guide explains setup, supported versions, tested behavior and removal. They are early integrations for evaluation, rather than ready-made production installations.</p>
-      <p>The walkthroughs show two tested handoffs: OBS to Blender, and Kdenlive through Blender to the OpenAssetIO Manager. They share media knowledge; they do not translate timelines or automatically transfer your files.</p>
+      <div class="catalog-head">
+        <div>
+          <p class="eyebrow">Integrations and demos</p>
+          <h2 id="integrations-title">Try it in the applications you already use.</h2>
+        </div>
+        <p>Point each application at the same production file (<code>.pproj</code>), and what one of them learns about your media is there for the next. Your edits, compositions and sessions stay in their usual project files.</p>
+      </div>
+
+      <div class="bento">
+        <article class="card card-feature">
+          <p class="tag">Video Sequencer · Rendering</p>
+          <h3>Blender</h3>
+          <p>Moved your footage? Bring it back into the Sequencer and keep working, with Blender remembering exactly what went into every render.</p>
+          <ul>
+            <li>Reconnect moved movies, sounds and image sequences</li>
+            <li>See which takes a render was made from</li>
+            <li>Notice when changed footage leaves a render out of date</li>
+          </ul>
+          <a href="https://github.com/postproject-org/postproject-blender/blob/main/ADOPTION.md">Try it in Blender →</a>
+        </article>
+        <article class="card card-wide">
+          <p class="tag">Video editing</p>
+          <h3>Kdenlive</h3>
+          <p>Renamed or reorganized your clips? Reopen the edit and pick up where you left off. Kdenlive also tells you when a proxy no longer matches its source footage.</p>
+          <a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/ADOPTION.md">Try it in Kdenlive →</a>
+        </article>
+        <article class="card">
+          <p class="tag">Recording</p>
+          <h3>OBS Studio</h3>
+          <p>Stop recording, and the take is ready for the next application, details included.</p>
+          <a href="https://github.com/postproject-org/postproject-obs">Try it in OBS →</a>
+        </article>
+        <article class="card">
+          <p class="tag">Compositing</p>
+          <h3>Natron</h3>
+          <p>Reconnect moved image sequences to the Reader nodes you already have. Your composition stays untouched.</p>
+          <a href="https://github.com/postproject-org/postproject-natron">Try it in Natron →</a>
+        </article>
+        <article class="card">
+          <p class="tag">Audio</p>
+          <h3>Ardour</h3>
+          <p>Ardour recognizes renamed or moved audio files by what they contain and puts them back into your session.</p>
+          <a href="https://github.com/postproject-org/postproject-ardour">Try it in Ardour →</a>
+        </article>
+        <article class="card">
+          <p class="tag">Compositing · Trial</p>
+          <h3>Nuke 17.0v1</h3>
+          <p>Find moved plates without rebuilding Reader nodes. The trial is prepared but has not yet been run in licensed Nuke, so your run could be the first.</p>
+          <a href="https://github.com/postproject-org/postproject-openassetio-manager/blob/main/docs/nuke-trial.md">Be the first to try it →</a>
+        </article>
+        <article class="card card-wide">
+          <p class="tag">Pipelines · OpenAssetIO</p>
+          <h3>Timelines that find their own media</h3>
+          <p>Hand a timeline to another tool and let it locate the footage, even when the original file paths no longer exist. OpenAssetIO connects the application to PostProject.</p>
+          <p class="links"><a href="https://github.com/postproject-org/postproject-openassetio-manager">OpenAssetIO Manager →</a> <a href="https://github.com/postproject-org/postproject-otio-demo">OpenTimelineIO demo →</a></p>
+        </article>
+        <article class="card card-wide card-accent">
+          <p class="tag">Start here</p>
+          <h3>See two applications work together</h3>
+          <p>Follow a tested handoff from start to finish, and watch media knowledge travel from one application to the next.</p>
+          <p class="links"><a href="https://github.com/postproject-org/postproject-obs#reproduce-acceptance-and-the-handoff">OBS → Blender</a> <a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/SHARED-PRODUCTION.md">Kdenlive → Blender → Manager</a></p>
+        </article>
+        <article class="card card-wide card-note">
+          <p class="tag">Good to know</p>
+          <h3>Early pilots, worth the setup</h3>
+          <p>For now you build an extension or a matching application version yourself. Each guide walks you through setup, supported versions and how to remove it again. Start with a test project.</p>
+          <p>PostProject shares what applications know about your media. It does not convert timelines or copy your files.</p>
+        </article>
+      </div>
     </section>
 
     <section class="integration">
