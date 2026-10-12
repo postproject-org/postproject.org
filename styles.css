@@ -26,9 +26,9 @@ h1 { max-width: 16ch; margin: .5rem 0 1.5rem; font-size: clamp(3rem, 6.5vw, 7.5r
 .proof article { min-height: 18rem; padding: 2rem clamp(1.5rem, 4vw, 4rem); border-right: 1px solid var(--line); }
 .proof article:last-child { border-right: 0; }
 h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -.035em; }
-.proof article > p:not(.number), .integration > p { color: var(--muted); line-height: 1.65; }
+.proof article > p:not(.number), .integration-copy p { color: var(--muted); line-height: 1.65; }
 .integration { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; padding: clamp(4rem, 10vw, 9rem) clamp(1.5rem, 5vw, 5rem); background: var(--panel); }
-.integration > a { grid-column: 2; color: var(--signal); font-weight: 700; }
+.integration-copy a { color: var(--signal); font-weight: 700; }
 footer { display: flex; gap: 1.5rem; padding: 2rem clamp(1.5rem, 5vw, 5rem); color: var(--muted); border-top: 1px solid var(--line); }
 footer span { margin-right: auto; }
 
@@ -40,7 +40,6 @@ footer span { margin-right: auto; }
   .proof, .integration { grid-template-columns: 1fr; }
   .proof article { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .proof article:last-child { border-bottom: 0; }
-  .integration > a { grid-column: 1; }
   footer { flex-wrap: wrap; }
   footer span { width: 100%; }
 }
