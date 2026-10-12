@@ -31,11 +31,10 @@
           <p class="eyebrow">Open-source media sharing for film and video software</p>
           <h1>Keep your media connected across applications.</h1>
           <p class="intro">
-            PostProject lets participating applications share what they know
-            about your media: its identity, where to find it, and which inputs
-            produced a result. Your applications keep their own native projects,
-            and your media files stay where you store them. Start with a pilot
-            integration and an explicitly selected local production.
+            Spend less time reconnecting moved clips and tracing the footage
+            behind a render. PostProject lets participating applications share
+            that knowledge, while you keep using their familiar projects and
+            storing your media where you choose.
           </p>
           <div class="actions">
             <a class="primary" href="#integrations">Try PostProject in an application</a>
@@ -50,54 +49,52 @@
       <article>
         <p class="number">01</p>
         <h2>Record in OBS. Pick it up in Blender.</h2>
-        <p>Register a finished recording, then let Blender recognize the same media in your shared production. Keep its identity when files move, without registering a second logical asset.</p>
+        <p>Keep a recording’s details with the footage when you start working in Blender. Even if you move the file, Blender can recognize the recording OBS already registered.</p>
         <a href="https://github.com/postproject-org/postproject-obs#reproduce-acceptance-and-the-handoff">OBS → Blender walkthrough</a>
       </article>
       <article>
         <p class="number">02</p>
         <h2>Edit in Kdenlive. Render in Blender. Keep the connection.</h2>
-        <p>Reuse media identity in Blender, record the inputs that produced a render, and resolve the result through the PostProject OpenAssetIO Manager. Check whether input changes affect the result.</p>
+        <p>Keep track of which take went into a Blender render, starting with footage registered in Kdenlive. See when changed inputs make a result stale, and find the recorded render through OpenAssetIO.</p>
         <a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/SHARED-PRODUCTION.md">Kdenlive → Blender → Manager walkthrough</a>
       </article>
       <article>
         <p class="number">03</p>
         <h2>Move media once. Reuse what the apps know.</h2>
-        <p>Participating applications can reuse identities and confirmed locations from the same local production. Content evidence helps recover moved clips; ambiguous matches stay a choice for you.</p>
-        <a href="https://docs.postproject.org/src/integrators/known-media-adoption.html">How identity adoption works</a>
+        <p>Find a moved clip and confirm its new location once. Other participating applications can reuse that location from the same local production. If several files match, you choose the right one.</p>
+        <a href="https://docs.postproject.org/src/integrators/known-media-adoption.html">See how applications recognize shared media</a>
       </article>
     </section>
 
     <section class="catalog" id="integrations" aria-labelledby="integrations-title">
       <p class="eyebrow">Try PostProject in an application</p>
       <h2 id="integrations-title">Integrations and demos</h2>
-      <p>These are experimental integrations. Select the same local <code>.pproj</code> production in each participating application. Timelines, node graphs and tracks stay in their native projects; media transfer is separate.</p>
+      <p>Try these experimental integrations with a test project. Select the same local <code>.pproj</code> file in each application to share media knowledge. Your edits, compositions and tracks stay in their familiar projects; copy media separately when needed.</p>
       <ul>
-        <li><a href="https://github.com/postproject-org/postproject-blender/blob/main/ADOPTION.md">Blender</a> — build the extension for identity adoption, relinking and render provenance.</li>
-        <li><a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/ADOPTION.md">Kdenlive</a> — build the optional pilot for clip recording, missing-media recovery and proxies.</li>
-        <li><a href="https://github.com/postproject-org/postproject-obs">OBS</a> — build the pilot to register finalized recordings.</li>
-        <li><a href="https://github.com/postproject-org/postproject-natron">Natron</a> — build the Reader pilot for compact sequences and explicit relinking.</li>
-        <li><a href="https://github.com/postproject-org/postproject-ardour">Ardour</a> — build the audio pilot to recover renamed sources by content.</li>
-        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager">OpenAssetIO Manager</a> and <a href="https://github.com/postproject-org/postproject-otio-demo">OTIO demo</a> — build matching packages and resolve media references through a standard host interface.</li>
-        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager/blob/main/docs/nuke-trial.md">Nuke 17.0v1</a> — prepared trial; licensed execution pending.</li>
+        <li><a href="https://github.com/postproject-org/postproject-blender/blob/main/ADOPTION.md">Blender</a> — reconnect moved movies, sounds and image sequences in the Sequencer, and keep track of the inputs behind your renders.</li>
+        <li><a href="https://github.com/postproject-org/postproject-kdenlive/blob/main/ADOPTION.md">Kdenlive</a> — find renamed or moved clips when reopening an edit, and check whether proxies still match their source footage.</li>
+        <li><a href="https://github.com/postproject-org/postproject-obs">OBS</a> — keep completed recordings and their details available to other participating applications.</li>
+        <li><a href="https://github.com/postproject-org/postproject-natron">Natron</a> — reconnect moved image sequences to existing Reader nodes and keep your composition intact.</li>
+        <li><a href="https://github.com/postproject-org/postproject-ardour">Ardour</a> — find renamed or moved audio files by their file contents and reconnect them to an existing session.</li>
+        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager">OpenAssetIO Manager</a> and <a href="https://github.com/postproject-org/postproject-otio-demo">OTIO demo</a> — find timeline media without depending on its original file paths, using OpenAssetIO to connect the application to PostProject.</li>
+        <li><a href="https://github.com/postproject-org/postproject-openassetio-manager/blob/main/docs/nuke-trial.md">Nuke 17.0v1</a> — a prepared trial for finding moved plates without rebuilding Reader nodes; it has not yet been run in licensed Nuke.</li>
       </ul>
-      <p>Recorded automated Linux checks cover Blender 5.2.2, Kdenlive 26.08.2, OBS 32.2.2, Natron 2.5.0 and Ardour 9.8. Follow each installation guide for the matching SDK, tested scope and removal or plugin-free fallback. Current development sources require a source build or matching review artifacts. The 0.9 Ardour resolver passes locally; its full builds await CI dependencies.</p>
-      <p>Knowledge accumulates as apps participate: OBS records identity, Blender can reuse it and add render provenance, and a configured consumer can resolve the recorded result. The two walkthroughs demonstrate separate handoffs; a combined three-app recording workflow has not been qualified.</p>
+      <p>These pilots currently require building an extension or a matching application. Each linked guide explains setup, supported versions, tested behavior and removal. They are early integrations for evaluation, rather than ready-made production installations.</p>
+      <p>The walkthroughs show two tested handoffs: OBS to Blender, and Kdenlive through Blender to the OpenAssetIO Manager. They share media knowledge; they do not translate timelines or automatically transfer your files.</p>
     </section>
 
     <section class="integration">
       <div>
         <p class="eyebrow">For software developers</p>
-        <h2>Use media identities across application boundaries.</h2>
+        <h2>Give your application a shared memory for media.</h2>
       </div>
       <p>
-        A production is a single database file that several programs can use
-        together. Every change is recorded, so each program can ask what the
-        others have changed since it last looked. PostProject also works with
-        open industry standards: the OpenTimelineIO demo refers to media by
-        PostProject identity, and a configured OpenAssetIO Manager resolves
-        those references on this computer. Missing or ambiguous files remain
-        explicit results. Developers can use PostProject from C, C++, Python
-        or the command line. This workflow uses local production data.
+        Add moved-media recovery and render history without building a separate
+        tracking system for every application. C, C++, Python and command-line
+        interfaces let your software share one local production file and learn
+        what other applications changed. The OpenTimelineIO demo shows how
+        OpenAssetIO finds timeline media through PostProject. Your application
+        stays in control when files are missing or several candidates match.
       </p>
       <a href="https://github.com/postproject-org/postproject-otio-demo">Run the demonstration →</a>
     </section>
