@@ -33,9 +33,9 @@ h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -.035em; }
 .integration-copy a { color: var(--signal); font-weight: 700; }
 footer { display: flex; gap: 1.5rem; padding: 2rem clamp(1.5rem, 5vw, 5rem); color: var(--muted); border-top: 1px solid var(--line); }
 footer span { margin-right: auto; }
-/* Same behavior and icons as Furo's toggle on docs.postproject.org; shown by theme.js. */
+/* Same behavior and icons as Furo's toggle on docs.postproject.org, at twice its size; shown by theme.js. */
 .theme-toggle:not([hidden]) { display: flex; padding: 0; color: var(--ink); background: transparent; border: none; cursor: pointer; }
-.theme-toggle svg { display: none; width: 1.25rem; height: 1.25rem; }
+.theme-toggle svg { display: none; width: 2.5rem; height: 2.5rem; }
 [data-theme="auto"] .theme-toggle .theme-icon-when-auto-light,
 [data-theme="dark"] .theme-toggle .theme-icon-when-dark,
 [data-theme="light"] .theme-toggle .theme-icon-when-light { display: block; }
@@ -43,7 +43,6 @@ footer span { margin-right: auto; }
   [data-theme="auto"] .theme-toggle .theme-icon-when-auto-light { display: none; }
   [data-theme="auto"] .theme-toggle .theme-icon-when-auto-dark { display: block; }
 }
-@media (max-width: 63em) { .theme-toggle svg { width: 1.5rem; height: 1.5rem; } }
 
 @media (max-width: 720px) {
   nav { align-items: flex-start; }

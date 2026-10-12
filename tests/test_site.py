@@ -1,3 +1,4 @@
+import hashlib
 import re
 from html.parser import HTMLParser
 from pathlib import Path
@@ -40,12 +41,20 @@ class SiteTest(TestCase):
 
     def test_local_assets_exist(self):
         for asset in self.parser.stylesheets + self.parser.images + self.parser.icons + self.parser.scripts:
-            self.assertTrue((ROOT / asset).is_file(), asset)
+            self.assertTrue((ROOT / asset.partition("?")[0]).is_file(), asset)
         for stylesheet in self.parser.stylesheets:
-            stylesheet_path = ROOT / stylesheet
+            stylesheet_path = ROOT / stylesheet.partition("?")[0]
             source = stylesheet_path.read_text(encoding="utf-8")
             for asset in re.findall(r"url\(['\"]?([^)'\"\s]+)", source):
                 self.assertTrue((stylesheet_path.parent / asset).is_file(), asset)
+
+    def test_stylesheets_and_scripts_bust_stale_caches(self):
+        # A cached stylesheet next to a new page breaks the layout, so each link
+        # carries a content hash that changes whenever the file does.
+        for asset in self.parser.stylesheets + self.parser.scripts:
+            path = asset.partition("?")[0]
+            digest = hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:8]
+            self.assertEqual(asset, f"{path}?v={digest}")
 
     def test_primary_destinations_are_secure(self):
         external = [
