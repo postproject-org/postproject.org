@@ -36,7 +36,7 @@ jobs:
       - name: Stage site
         run: |
           mkdir _site
-          cp index.html styles.css theme.css logo.svg CNAME _site/
+          cp index.html styles.css theme.css theme.js logo.svg CNAME _site/
           cp -R fonts _site/
       - uses: actions/upload-pages-artifact@v4
         with:

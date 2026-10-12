@@ -8,7 +8,7 @@ body { margin: 0; color: var(--ink); background: var(--paper); }
 a { color: inherit; text-underline-offset: .25rem; }
 .hero { min-height: 72vh; overflow: hidden; padding: 1.5rem var(--hero-gutter) 5rem; background: radial-gradient(circle at 75% 15%, var(--hero-glow) 0, transparent 35%); }
 nav { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-nav div { display: flex; gap: 1.5rem; }
+nav div { display: flex; align-items: center; gap: 1.5rem; }
 .wordmark { display: inline-flex; align-items: flex-start; gap: .65rem; font-size: 1.25rem; line-height: 1; font-weight: 800; text-decoration: none; letter-spacing: -.04em; }
 /* Optical alignment of Inter's capitals with the logo's upper bulge. */
 .wordmark-text { padding-top: .0625rem; }
@@ -33,10 +33,21 @@ h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -.035em; }
 .integration-copy a { color: var(--signal); font-weight: 700; }
 footer { display: flex; gap: 1.5rem; padding: 2rem clamp(1.5rem, 5vw, 5rem); color: var(--muted); border-top: 1px solid var(--line); }
 footer span { margin-right: auto; }
+/* Same behavior and icons as Furo's toggle on docs.postproject.org; shown by theme.js. */
+.theme-toggle:not([hidden]) { display: flex; padding: 0; color: var(--ink); background: transparent; border: none; cursor: pointer; }
+.theme-toggle svg { display: none; width: 1.25rem; height: 1.25rem; }
+[data-theme="auto"] .theme-toggle .theme-icon-when-auto-light,
+[data-theme="dark"] .theme-toggle .theme-icon-when-dark,
+[data-theme="light"] .theme-toggle .theme-icon-when-light { display: block; }
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .theme-toggle .theme-icon-when-auto-light { display: none; }
+  [data-theme="auto"] .theme-toggle .theme-icon-when-auto-dark { display: block; }
+}
+@media (max-width: 63em) { .theme-toggle svg { width: 1.5rem; height: 1.5rem; } }
 
 @media (max-width: 720px) {
   nav { align-items: flex-start; }
-  nav div { flex-direction: column; gap: .5rem; text-align: right; }
+  nav div { flex-direction: column; align-items: flex-end; gap: .5rem; text-align: right; }
   .hero-layout { grid-template-columns: 1fr; margin-top: 3rem; }
   /* The logo is decoration: on small screens it sits behind the copy instead of above it. */
   .hero-logo, .hero-copy { grid-area: 1 / 1; }
@@ -84,4 +95,4 @@ footer span { margin-right: auto; }
 }
 .proof article > a { color: var(--signal); font-weight: 700; }
 :target { scroll-margin-top: 2rem; }
-a:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }

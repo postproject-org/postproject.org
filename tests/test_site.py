@@ -13,6 +13,7 @@ class PageParser(HTMLParser):
         self.stylesheets = []
         self.images = []
         self.icons = []
+        self.scripts = []
         self.ids = set()
 
     def handle_starttag(self, tag, attrs):
@@ -23,6 +24,8 @@ class PageParser(HTMLParser):
             self.links.append(values.get("href"))
         if tag == "link" and values.get("rel") == "stylesheet":
             self.stylesheets.append(values.get("href"))
+        if tag == "script":
+            self.scripts.append(values.get("src"))
         if tag == "img":
             self.images.append(values.get("src"))
         if tag == "link" and values.get("rel") == "icon":
@@ -36,7 +39,7 @@ class SiteTest(TestCase):
         self.parser.feed(self.source)
 
     def test_local_assets_exist(self):
-        for asset in self.parser.stylesheets + self.parser.images + self.parser.icons:
+        for asset in self.parser.stylesheets + self.parser.images + self.parser.icons + self.parser.scripts:
             self.assertTrue((ROOT / asset).is_file(), asset)
         for stylesheet in self.parser.stylesheets:
             stylesheet_path = ROOT / stylesheet
